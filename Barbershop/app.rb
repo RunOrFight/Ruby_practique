@@ -20,9 +20,10 @@ post '/visit' do
   @user_name = params[:user_name]
   @phone_number = params[:phone_number]
   @date_time = params[:date_time]
+  @barber = params[:barber]
 
-  file = File.open("users.txt", "a")
-  file.puts "User: #{@user_name} Phone: #{@phone_number} Date: #{@date_time}"
+  file = File.open("./public/users.txt", "a")
+  file.puts "User: #{@user_name} Phone: #{@phone_number} Date: #{@date_time} Barber: #{@barber}"
   file.close
 
   erb :message

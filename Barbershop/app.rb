@@ -1,10 +1,13 @@
 require 'sinatra'
+require 'rubygems'
+require 'sinatra/reloader'
 
 get '/' do
   erb "Hello!"
 end
 
-get '/about' do 
+get '/about' do
+  @error = "something wrong!" 
   erb :about
 end
 

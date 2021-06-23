@@ -6,28 +6,28 @@
   <div class="mb-3" >
 
     <label >Введите имя</label>
-    <input type="text" name="user_name" class="form-control"  placeholder="Введите ваше имя">
+    <input type="text" name="user_name" class="form-control"  placeholder="Введите ваше имя" value="<%=@user_name%>">
 
   </div>
 
   <div class="mb-3" >
 
     <label >Введите номер телефона</label>
-    <input type="text" name="phone_number" class="form-control"  placeholder="+37529.......">
+    <input type="text" name="phone_number" class="form-control"  placeholder="+37529......." value="<%=@phone_number%>">
 
   </div>
   
   <div class="mb-3" >
 
     <label >Когда вас ждать</label>
-    <input type="text" name="date_time" class="form-control"  placeholder="Введите дату">
+    <input type="text" name="date_time" class="form-control"  placeholder="Введите дату" value="<%=@date_time%>">
 
   </div>
   <div class="mb-3" >
 
 	    <label >Выберите парикмахера</label>
-	  	<select class="form-select" aria-label="Default select example" name="barber">
-	  		<option selected></option>
+	  	<select class="form-select" aria-label="Default select example" name="barber" >
+	  		<option selected ></option>
 	  		<option>Jassie Pinkman</option>
 	  		<option>Walter White</option>
 	  		<option>Gus Fring</option>
@@ -37,7 +37,7 @@
   <div class="mb-3" >
 
     <label >Выберите цвет</label>
-    <select id="color" name="color">
+    <select id="color" name="color" value="<%=@color%>">
 	  	<option value="#7bd148">Green</option>
 	  	<option value="#5484ed">Bold blue</option>
 	  	<option value="#a4bdfc">Blue</option>
@@ -59,6 +59,10 @@
 
 </form>
 <script type="text/javascript">
-	$('#color').simplecolorpicker();
+	$(function(){
+
+		$('#color').simplecolorpicker();
+
+	});
 </script>
 	

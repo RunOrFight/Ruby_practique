@@ -28,15 +28,15 @@ post '/visit' do
 
   hh = {user_name: "Введите имя",phone_number: "Введите номер" ,date_time: "Введите дату" ,barber: "Выберите парикмахера" ,color: "Выберите цвет"}
   
-  hh.each do |key, value|
-    if params[key] == ""
-      @error = "#{value}"
-      return erb :visit  
-      end  
-  end
+  @error = hh.select{ |key,_| params[key] ==''}.values.join(", ")
+  if @error != ''
+    return erb :visit
+  else 
+    
   file = File.open("./public/users.txt", "a")
   file.puts "User: #{@user_name} Phone: #{@phone_number} Date: #{@date_time} Barber: #{@barber} Color: #{@color}"
   file.close
 
-   erb :message  
+  erb :message
+  end  
 end

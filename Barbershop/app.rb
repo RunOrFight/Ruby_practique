@@ -21,9 +21,10 @@ post '/visit' do
   @phone_number = params[:phone_number]
   @date_time = params[:date_time]
   @barber = params[:barber]
+  @color = params[:color]
 
   file = File.open("./public/users.txt", "a")
-  file.puts "User: #{@user_name} Phone: #{@phone_number} Date: #{@date_time} Barber: #{@barber}"
+  file.puts "User: #{@user_name} Phone: #{@phone_number} Date: #{@date_time} Barber: #{@barber} Color: #{@color}"
   file.close
 
   erb :message

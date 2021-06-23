@@ -31,13 +31,12 @@ post '/visit' do
   hh.each do |key, value|
     if params[key] == ""
       @error = "#{value}"
-      return erb :visit
-    else  
-      file = File.open("./public/users.txt", "a")
-      file.puts "User: #{@user_name} Phone: #{@phone_number} Date: #{@date_time} Barber: #{@barber} Color: #{@color}"
-      file.close
+      return erb :visit  
+      end  
+  end
+  file = File.open("./public/users.txt", "a")
+  file.puts "User: #{@user_name} Phone: #{@phone_number} Date: #{@date_time} Barber: #{@barber} Color: #{@color}"
+  file.close
 
-      erb :message
-    end  
-  end  
+   erb :message  
 end

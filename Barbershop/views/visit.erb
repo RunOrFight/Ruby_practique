@@ -1,1 +1,29 @@
 <h2>Записаться</h2>
+<p>Вы можете записаться к нас заполнив форму ниже</p>
+
+<form action ="/visit" method="POST">
+
+  <div class="mb-3" >
+
+    <label >Введите имя</label>
+    <input type="text" name="user_name" class="form-control"  placeholder="Введите ваше имя">
+
+  </div>
+
+  <div class="mb-3" >
+
+    <label >Введите номер телефона</label>
+    <input type="text" name="pohe_number" class="form-control"  value="+375()">
+
+  </div>
+  
+  <div class="mb-3" >
+
+    <label >Когда вас ждать</label>
+    <input type="text" name="date_time" class="form-control"  placeholder="Введите дату ">
+
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>	
+
+</form>

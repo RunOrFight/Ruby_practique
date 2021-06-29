@@ -1,6 +1,9 @@
 require 'sinatra'
 require 'rubygems'
 require 'sinatra/reloader'
+require 'sqlite3'
+
+db = SQLite3::Database.new 'MyFirstDB.sqlite'
 
 get '/' do
   erb "Hello!"

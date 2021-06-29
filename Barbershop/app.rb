@@ -3,7 +3,19 @@ require 'rubygems'
 require 'sinatra/reloader'
 require 'sqlite3'
 
-db = SQLite3::Database.new 'MyFirstDB.sqlite'
+configure do
+  @db = SQLite3::Database.new 'MyFirstDB.sqlite'
+  @db.execute "CREATE TABLE IF NOT EXISTS 'Barbershop'('ID' INTEGER,
+  'Name'  TEXT,
+  'Phone' TEXT,
+  'Date'  TEXT,
+  'Barber'  TEXT,
+  'Color' TEXT,
+  PRIMARY KEY('ID' AUTOINCREMENT));"
+  
+end
+
+
 
 get '/' do
   erb "Hello!"
@@ -35,10 +47,7 @@ post '/visit' do
   if @error != ''
     return erb :visit
   else 
-    
-  file = File.open("./public/users.txt", "a")
-  file.puts "User: #{@user_name} Phone: #{@phone_number} Date: #{@date_time} Barber: #{@barber} Color: #{@color}"
-  file.close
+     
 
   erb :message
   end  

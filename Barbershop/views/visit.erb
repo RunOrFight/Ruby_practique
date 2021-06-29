@@ -27,10 +27,10 @@
 
 	    <label >Выберите парикмахера</label>
 	  	<select class="form-select" aria-label="Default select example" name="barber" >
-	  		<option selected ></option>
-	  		<option>Jassie Pinkman</option>
-	  		<option>Walter White</option>
-	  		<option>Gus Fring</option>
+	  		<option></option>
+	  		<option <%= @barber == "Jassie Pinkman" ? 'selected' : ""%>>Jassie Pinkman</option>
+	  		<option <%= @barber == "Walter White" ? 'selected' : ""%>>Walter White</option>
+	  		<option <%= @barber == "Gus Fring" ? 'selected' : ""%>>Gus Fring</option>
 	    </select>
 
   </div>

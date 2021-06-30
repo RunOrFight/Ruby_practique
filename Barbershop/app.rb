@@ -3,9 +3,13 @@ require 'rubygems'
 require 'sinatra/reloader'
 require 'sqlite3'
 
+def get_db 
+  return SQLite3::Database.new 'MyFirstDB.sqlite'
+end
+
 configure do
-  @db = SQLite3::Database.new 'MyFirstDB.sqlite'
-  @db.execute "CREATE TABLE IF NOT EXISTS 'Barbershop'('ID' INTEGER,
+  db = get_db
+  db.execute "CREATE TABLE IF NOT EXISTS 'Barbershop'('ID' INTEGER,
   'Name'  TEXT,
   'Phone' TEXT,
   'Date'  TEXT,
@@ -14,7 +18,7 @@ configure do
   PRIMARY KEY('ID' AUTOINCREMENT));"
   
 end
-
+  
 
 
 get '/' do
@@ -46,9 +50,14 @@ post '/visit' do
   @error = hh.select{ |key,_| params[key] ==''}.values.join(", ")
   if @error != ''
     return erb :visit
-  else 
-     
+  else
 
-  erb :message
+    db = get_db
+    db.execute 'INSERT INTO
+    Barbershop (Name, Phone, Date, Barber, Color) 
+    VALUES (?, ?, ?, ?, ?)
+    ', [@user_name, @phone_number, @date_time, @barber, @color]  
+    erb :message
   end  
 end
+
